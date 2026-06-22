@@ -803,6 +803,14 @@ summary:focus-visible {
   .service-card {
     flex-basis: min(82vw, 320px);
   }
+
+  .hero-card {
+    grid-row: 1;
+  }
+
+  .hero__content {
+    grid-row: 2;
+  }
 }
 
 @media (max-width: 1120px) {
@@ -872,14 +880,6 @@ summary:focus-visible {
 
   .hero {
     padding-top: 2.5rem;
-  }
-
-  .hero-card {
-    order: -1;
-  }
-
-  .hero__content {
-    order: 1;
   }
 
   .hero h1 {
