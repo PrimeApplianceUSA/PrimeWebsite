@@ -15,7 +15,7 @@
   --radius-small: 16px;
   --container: 1160px;
   --hero-image: url("./assets/hero-appliance-repair.jpg");
-  --hero-image-position: center right;
+  --hero-image-position: 35% center;
   --hero-image-size: cover;
 }
 
@@ -183,7 +183,7 @@ main > section,
   inset: 0;
   z-index: -2;
   background-image:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.9) 45%, rgba(255, 255, 255, 0.62) 100%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.74) 45%, rgba(255, 255, 255, 0.24) 100%),
     var(--hero-image);
   background-position:
     center center,
@@ -200,8 +200,8 @@ main > section,
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(circle at left top, rgba(201, 31, 46, 0.12), transparent 28%),
-    radial-gradient(circle at right 30%, rgba(15, 60, 135, 0.14), transparent 24%);
+    radial-gradient(circle at left top, rgba(201, 31, 46, 0.08), transparent 28%),
+    radial-gradient(circle at right 30%, rgba(15, 60, 135, 0.08), transparent 24%);
   pointer-events: none;
 }
 
@@ -244,6 +244,7 @@ main > section,
 .feature-card,
 .process-card,
 .service-card,
+.photo-card,
 .faq-list details,
 .trust-strip article {
   border: 1px solid rgba(32, 48, 58, 0.08);
@@ -251,7 +252,7 @@ main > section,
 }
 
 .hero__content {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(247, 251, 255, 0.94));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 251, 255, 0.9));
   border-radius: calc(var(--radius) + 6px);
   padding: clamp(2rem, 3vw, 3rem);
   position: relative;
@@ -367,6 +368,24 @@ main > section,
   border: 1px solid var(--line);
 }
 
+.call-button {
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: min(100%, 18rem);
+  border-radius: 20px;
+  padding: 0.95rem 1.35rem;
+  box-shadow: 0 16px 30px rgba(10, 43, 97, 0.18);
+}
+
+.call-button span {
+  margin-bottom: 0.15rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
 .hero__highlights {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -437,6 +456,38 @@ main > section,
   color: white;
 }
 
+.call-box {
+  display: grid;
+  gap: 0.18rem;
+  width: 100%;
+  padding: 1rem 1.1rem;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at right top, rgba(255, 255, 255, 0.2), transparent 35%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.06));
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.call-box:hover,
+.call-box:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.82);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.call-box span {
+  color: var(--accent-soft);
+  font-size: 0.9rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
 .hero-card__note {
   color: rgba(255, 255, 255, 0.78);
 }
@@ -466,6 +517,7 @@ main > section,
 
 .trust-strip__grid,
 .service-grid,
+.photo-grid,
 .feature-grid,
 .apart-grid,
 .review-grid,
@@ -632,6 +684,57 @@ main > section,
   display: flex;
   justify-content: center;
   margin-top: 1.4rem;
+}
+
+.service-photos {
+  padding-top: 1.5rem;
+  background:
+    radial-gradient(circle at left top, rgba(201, 31, 46, 0.06), transparent 24%),
+    linear-gradient(180deg, rgba(15, 60, 135, 0.035), rgba(255, 255, 255, 0));
+}
+
+.photo-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.photo-card {
+  position: relative;
+  min-height: 20rem;
+  margin: 0;
+  overflow: hidden;
+  border-radius: calc(var(--radius) + 4px);
+  background: #ffffff;
+}
+
+.photo-card--wide {
+  grid-column: auto;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.photo-card:hover img {
+  transform: scale(1.04);
+}
+
+.photo-card figcaption {
+  position: absolute;
+  inset: auto 1rem 1rem;
+  width: calc(100% - 2rem);
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 16px;
+  background: rgba(10, 43, 97, 0.86);
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.35;
+  backdrop-filter: blur(12px);
 }
 
 .feature-grid {
@@ -809,9 +912,14 @@ summary:focus-visible {
   .trust-strip__grid,
   .feature-grid,
   .apart-grid,
+  .photo-grid,
   .review-grid,
   .process-grid {
     grid-template-columns: 1fr;
+  }
+
+  .photo-card--wide {
+    grid-column: auto;
   }
 
   .hero__highlights {
@@ -941,12 +1049,17 @@ summary:focus-visible {
     font-size: clamp(1.55rem, 8vw, 2rem);
   }
 
+  .call-box {
+    padding: 0.9rem;
+  }
+
   .hero__highlights {
     gap: 0.75rem;
   }
 
   .hero__highlights li,
   .service-card,
+  .photo-card,
   .feature-card,
   .apart-card,
   .review-card,
@@ -962,6 +1075,14 @@ summary:focus-visible {
 
   .service-card {
     flex-basis: 84vw;
+  }
+
+  .photo-card {
+    min-height: 17rem;
+  }
+
+  .photo-card figcaption {
+    inset: auto 0.8rem 0.8rem;
   }
 
   .services-cta {
